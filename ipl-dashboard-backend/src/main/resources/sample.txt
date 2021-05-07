@@ -1,0 +1,1 @@
+:id, :city, :date, :playerOfMatch, :venue, :neutralVenue, :team1, :team2, :tossWinnerTeam, :tossDecision, :matchWinner, :result, :resultMargin, :eliminator, :method, :umpire1, :umpire2
