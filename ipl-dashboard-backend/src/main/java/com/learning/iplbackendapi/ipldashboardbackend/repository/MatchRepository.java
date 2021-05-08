@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MatchRepository extends CrudRepository<MatchModel, Long> {
     
-    List<MatchModel> findByTeam1OrTeam2 (String team1, String team2) throws Exception;
+    public List<MatchModel> findByTeam1OrTeam2 (String team1, String team2) throws Exception;
 }

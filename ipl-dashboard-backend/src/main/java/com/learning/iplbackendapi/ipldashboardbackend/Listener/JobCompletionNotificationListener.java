@@ -10,7 +10,6 @@ import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.listener.JobExecutionListenerSupport;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -59,9 +58,9 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
       teamData.values()
         .forEach(teamModel -> entityManager.persist(teamModel));
 
-      entityManager.createQuery("select t.teamId, t.teamName, t.totalMatchesPlayed, t.totalMatchesWon from TeamModel t", Object[].class)
-        .getResultList()
-        .forEach(result -> System.out.println("TeamId: " + (long) result[0] + "  TeamName: " + (String) result[1] + " TotalMatchedPlayed: " + (long) result[2] + " TotalMatchesWon: " + (long) result[3]));
+      // entityManager.createQuery("select t.teamId, t.teamName, t.totalMatchesPlayed, t.totalMatchesWon from TeamModel t", Object[].class)
+      //   .getResultList()
+      //   .forEach(result -> System.out.println("TeamId: " + (long) result[0] + "  TeamName: " + (String) result[1] + " TotalMatchedPlayed: " + (long) result[2] + " TotalMatchesWon: " + (long) result[3]));
     }
   }
 }
