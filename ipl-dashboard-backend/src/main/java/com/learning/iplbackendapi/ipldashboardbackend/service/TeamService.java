@@ -1,5 +1,6 @@
 package com.learning.iplbackendapi.ipldashboardbackend.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +13,6 @@ import com.learning.iplbackendapi.ipldashboardbackend.repository.TeamRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,6 +20,7 @@ public class TeamService {
 
     @Autowired
     TeamRepository teamRepository;
+    
 
     @Autowired
     MatchRepository matchRepository;
@@ -36,6 +36,16 @@ public class TeamService {
             return teamModel.get();
         }
         return teamModel.get();
+    }
+
+    public List<MatchModel> getMatchesByTeamAndYear(String teamName, int year) throws Exception {
+        LocalDate startDate = LocalDate.of(year, 1, 1);
+        LocalDate endDate = LocalDate.of(year+1, 1, 1);
+        Optional<List<MatchModel>> matches = matchRepository.getMatchesByTeamAndDate(teamName, startDate, endDate);
+        if (matches.isPresent()) {
+            return matches.get();
+        }
+        return null;
     }
     
 }
